@@ -6,7 +6,7 @@ from Scripts.diabetes_pipeline import *
 ################################################
 
 def main():
-    df = pd.read_csv("C:/Users/emrek/Desktop/VBO BootCamp/Miuul/DataSets/diabetes.csv")
+    df = pd.read_csv("C:/Users/emrek/Desktop/DataSets/diabetes.csv")
     X, y = diabetes_data_prep(df)
     base_models(X, y)
     best_models = hyperparameter_optimization(X, y)
@@ -16,6 +16,6 @@ def main():
 
 # In order to run this file in terminal we can write main class.
 if __name__ == "__main__":
-    print("İşlem başladı")
+    print("Process was initiated.")
     main()
 
