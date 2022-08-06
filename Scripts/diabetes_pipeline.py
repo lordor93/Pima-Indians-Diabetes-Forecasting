@@ -120,18 +120,18 @@ def missing_values_table(dataframe, na_name=False):
         return na_columns
 
 def diabetes_data_prep(dataframe):
-    dataframe.columns = [col.upper() for col in dataframe.columns]
-
+    
     # Replacing 0's representing NAN values with NA
-
     na_columns = list(dataframe.columns)[1:6]
-
+    
     for col in na_columns:
         dataframe[col].replace(0, np.nan, inplace=True)
-
+        
+    #Filling NA's
     na_columns = missing_values_table(dataframe, na_name=True)
     df = fill_median(dataframe, na_columns)
 
+    dataframe.columns = [col.upper() for col in dataframe.columns]
     # Glucose
     dataframe['NEW_GLUCOSE_CAT'] = pd.cut(x=dataframe['GLUCOSE'], bins=[-1, 139, 200], labels=["normal", "prediabetes"])
 
