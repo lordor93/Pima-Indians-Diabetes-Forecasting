@@ -21,12 +21,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import StandardScaler
-from Helper_Funcs.data_prep import *
-from Helper_Funcs.ML_Helper import *
-from Helper_Funcs.EDA_funcs import *
-
-
-
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
 from catboost import CatBoostClassifier
@@ -87,26 +81,27 @@ def correlation_matrix(df, cols):
 def grab_col_names(dataframe, cat_th=10, car_th=20):
     """
 
-    Veri setindeki kategorik, numerik ve kategorik fakat kardinal değişkenlerin isimlerini verir.
-    Not: Kategorik değişkenlerin içerisine numerik görünümlü kategorik değişkenler de dahildir.
+   
+    Illustrate numerical, categorical and cardinal features in dataset
+    Note: Categorical variables contain numerical looking variebles (encoded variables)
 
     Parameters
     ------
         dataframe: dataframe
-                Değişken isimleri alınmak istenilen dataframe
+                Dataframe which will be used.
         cat_th: int, optional
-                numerik fakat kategorik olan değişkenler için sınıf eşik değeri
+              Threshold value for numerical values accepted as categorical values
         car_th: int, optinal
-                kategorik fakat kardinal değişkenler için sınıf eşik değeri
+                For cardinal variebles threshold value to differentiate them from categorical values.
 
     Returns
     ------
         cat_cols: list
-                Kategorik değişken listesi
+                Categorical variables list
         num_cols: list
-                Numerik değişken listesi
+                Numerical variables list
         cat_but_car: list
-                Kategorik görünümlü kardinal değişken listesi
+                Categorical looking  cardinal variables list
 
     Examples
     ------
@@ -117,9 +112,7 @@ def grab_col_names(dataframe, cat_th=10, car_th=20):
 
     Notes
     ------
-        cat_cols + num_cols + cat_but_car = toplam değişken sayısı
-        num_but_cat cat_cols'un içerisinde.
-        Return olan 3 liste toplamı toplam değişken sayısına eşittir: cat_cols + num_cols + cat_but_car = değişken sayısı
+        cat_cols + num_cols + cat_but_car =  number of total variables
 
     """
 
@@ -152,20 +145,20 @@ check_df(df)
 # Değişken türlerinin ayrıştırılması
 cat_cols, num_cols, cat_but_car = grab_col_names(df, cat_th=5, car_th=20)
 
-# Kategorik değişkenlerin incelenmesi
+# Categorical values examination
 for col in cat_cols:
     cat_summary(df, col)
 
-# Sayısal değişkenlerin incelenmesi
+# Numerical values examination
 df[num_cols].describe().T
 
 # for col in num_cols:
 #     num_summary(df, col, plot=True)
 
-# Sayısal değişkenkerin birbirleri ile korelasyonu
+# Correlation of numerical values with each other 
 correlation_matrix(df, num_cols)
 
-# Target ile sayısal değişkenlerin incelemesi
+# Summary of numerical values according to target 
 for col in num_cols:
     target_summary_with_num(df, "Outcome", col)
 
@@ -200,7 +193,7 @@ def one_hot_encoder(dataframe, categorical_cols, drop_first=False):
 
 df.head()
 
-# Değişken isimleri büyütmek
+# Making upper case 
 df.columns = [col.upper() for col in df.columns]
 
 # Glucose
@@ -237,7 +230,6 @@ check_df(df)
 
 df.columns = [col.upper() for col in df.columns]
 
-# Son güncel değişken türlerimi tutuyorum.
 cat_cols, num_cols, cat_but_car = grab_col_names(df, cat_th=5, car_th=20)
 cat_cols = [col for col in cat_cols if "OUTCOME" not in col]
 
@@ -247,7 +239,7 @@ for col in num_cols:
 replace_with_thresholds(df, "INSULIN")
 
 
-# Standartlaştırma
+# Standardization
 X_scaled = StandardScaler().fit_transform(df[num_cols])
 df[num_cols] = pd.DataFrame(X_scaled, columns=df[num_cols].columns)
 
