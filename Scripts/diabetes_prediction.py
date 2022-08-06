@@ -4,7 +4,7 @@
 
 import joblib
 import pandas as pd
-from machine_learning.diabetes_pipeline import *
+from Scripts.diabetes_pipeline import *
 
 df = pd.read_csv("C:/Users/emrek/Desktop/DataSets/diabetes.csv")
 
