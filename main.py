@@ -1,7 +1,5 @@
-
-
 import joblib
-from 
+from Scripts.diabetes_pipeline import *
 
 ################################################
 # Pipeline Main Function
@@ -16,7 +14,7 @@ def main():
     joblib.dump(voting_clf, "../voting_clf.pkl")
     return voting_clf
 
-# komut satırından calistirmak icin main class yazılır.
+# In order to run this file in terminal we can write main class.
 if __name__ == "__main__":
     print("İşlem başladı")
     main()
