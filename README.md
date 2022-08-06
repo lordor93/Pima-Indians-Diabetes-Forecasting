@@ -17,4 +17,5 @@ This dataset is originally from the National Institute of Diabetes and Digestive
 - Outcome: Class variable (0 or 1)
 
 # NOTE
-To predict new value,  "diabetes_prediction" script must be run(inside the scripts file)
+- Main.py script saves ml model as a "pkl" file format.
+- To predict new value,  "diabetes_prediction" script must be run(inside the scripts file)
