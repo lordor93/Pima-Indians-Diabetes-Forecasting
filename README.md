@@ -1,2 +1,3 @@
 # Pima-Indians-Diabetes-Forecasting
-![indir](https://user-images.githubusercontent.com/13394756/183243327-01775de2-ae28-49ef-9e66-a6420b3d6f13.JPG)
+
+![235cf6b9134342a49a456409fc3d2a83--native-american-tribes-indian-tribes](https://user-images.githubusercontent.com/13394756/183243400-f20ea133-1ab0-421a-a6fe-a19b66af766f.jpg)
