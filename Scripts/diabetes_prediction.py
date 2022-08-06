@@ -4,16 +4,14 @@
 
 import joblib
 import pandas as pd
+from machine_learning.diabetes_pipeline import *
 
-df = pd.read_csv("DataSets/diabetes.csv")
+df = pd.read_csv("C:/Users/emrek/Desktop/DataSets/diabetes.csv")
 
 random_user = df.sample(1, random_state=45)
 
 new_model = joblib.load("../voting_clf.pkl")
 
-new_model.predict(random_user)
-
-from machine_learning.diabetes_pipeline import *
 
 X, y = diabetes_data_prep(df)
 
