@@ -19,8 +19,6 @@ from xgboost import XGBClassifier
 # Helper Functions
 ################################################
 
-# utils.py # sirketlerde kullanılan yardımcı helper fonksiyonlar genelde böyle tutulur
-# helpers.py
 
 # Data Preprocessing & Feature Engineering
 def grab_col_names(dataframe, cat_th=10, car_th=20):
@@ -247,29 +245,3 @@ def voting_classifier(best_models, X, y):
     return voting_clf
 
 
-
-################################################
-# Pipeline Main Function
-################################################
-
-def main():
-    df = pd.read_csv("C:/Users/emrek/Desktop/VBO BootCamp/Miuul/DataSets/diabetes.csv")
-    X, y = diabetes_data_prep(df)
-    base_models(X, y)
-    best_models = hyperparameter_optimization(X, y)
-    voting_clf = voting_classifier(best_models, X, y)
-    joblib.dump(voting_clf, "../voting_clf.pkl")
-    return voting_clf
-
-# komut satırından calistirmak icin main class yazılır.
-if __name__ == "__main__":
-    print("İşlem başladı")
-    main()
-
-# git github
-# makefile
-# veri tabanlarından
-# log
-# class
-# docker
-# requirement.txt
