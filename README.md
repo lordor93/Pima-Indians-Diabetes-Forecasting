@@ -15,3 +15,6 @@ This dataset is originally from the National Institute of Diabetes and Digestive
 - DiabetesPedigreeFunction: Diabetes pedigree function
 - Age: Age (years)
 - Outcome: Class variable (0 or 1)
+
+## NOTE
+To predict new value,  "diabetes_prediction" script must be run (inside the scripts file)
