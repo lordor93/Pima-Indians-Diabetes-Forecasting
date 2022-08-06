@@ -24,26 +24,27 @@ from xgboost import XGBClassifier
 def grab_col_names(dataframe, cat_th=10, car_th=20):
     """
 
-    Veri setindeki kategorik, numerik ve kategorik fakat kardinal değişkenlerin isimlerini verir.
-    Not: Kategorik değişkenlerin içerisine numerik görünümlü kategorik değişkenler de dahildir.
+   
+    Illustrate numerical, categorical and cardinal features in dataset
+    Note: Categorical variables contain numerical looking variebles (encoded variables)
 
     Parameters
     ------
         dataframe: dataframe
-                Değişken isimleri alınmak istenilen dataframe
+                Dataframe which will be used.
         cat_th: int, optional
-                numerik fakat kategorik olan değişkenler için sınıf eşik değeri
+              Threshold value for numerical values accepted as categorical values
         car_th: int, optinal
-                kategorik fakat kardinal değişkenler için sınıf eşik değeri
+                For cardinal variebles threshold value to differentiate them from categorical values.
 
     Returns
     ------
         cat_cols: list
-                Kategorik değişken listesi
+                Categorical variables list
         num_cols: list
-                Numerik değişken listesi
+                Numerical variables list
         cat_but_car: list
-                Kategorik görünümlü kardinal değişken listesi
+                Categorical looking  cardinal variables list
 
     Examples
     ------
@@ -54,9 +55,7 @@ def grab_col_names(dataframe, cat_th=10, car_th=20):
 
     Notes
     ------
-        cat_cols + num_cols + cat_but_car = toplam değişken sayısı
-        num_but_cat cat_cols'un içerisinde.
-        Return olan 3 liste toplamı toplam değişken sayısına eşittir: cat_cols + num_cols + cat_but_car = değişken sayısı
+        cat_cols + num_cols + cat_but_car =  number of total variables
 
     """
 
